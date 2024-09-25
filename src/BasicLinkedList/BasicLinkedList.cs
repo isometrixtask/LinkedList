@@ -4,11 +4,27 @@ public class BasicLinkedList<T>
 {
     private BasicLinkedListItem<T>? _head;
 
-    public void Insert(T item) {
+    public void Insert(T item, int position = 0) {
 
         var newListItem = new BasicLinkedListItem<T>(item);
-        newListItem.Next = _head;
-        _head = newListItem;
+
+        if (position == 0) {
+            newListItem.Next = _head;
+            _head = newListItem;
+            return;
+        }
+
+        var currentPosition = 0;
+        var currentItem = _head;
+
+        while (currentPosition < position - 1 && currentItem?.Next is not null) {
+            currentItem = currentItem.Next;
+            currentPosition++;
+        }
+
+        newListItem.Next = currentItem?.Next;
+        currentItem.Next = newListItem;
+
     }
 
     public void Delete() {
