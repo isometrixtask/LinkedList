@@ -30,6 +30,9 @@ public class BasicLinkedList<T>
 
     public void Delete(int position = 0) {
 
+        var listIsEmpty = _head is null;
+        if (listIsEmpty) return;
+
         var deletingFromStart = position == 0;
         if (deletingFromStart) {
             _head = _head?.Next;

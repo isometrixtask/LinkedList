@@ -159,4 +159,28 @@ public class BasicLinkedListTests
         var result = list.PrintList();
         Assert.Equal(expected, result);
     }
+
+    [Fact]
+    public void BasicLinkedList_DeleteFromEmptyList_LeavesEmptyList()
+    {
+        var list = new BasicLinkedList<int>();
+        list.Delete();
+
+        var expected = string.Empty;
+
+        var result = list.PrintList();
+        Assert.Equal(expected, result);
+    }
+
+    [Fact]
+    public void BasicLinkedList_DeleteFromEmptyListByPosition_LeavesEmptyList()
+    {
+        var list = new BasicLinkedList<int>();
+        list.Delete(3);
+
+        var expected = string.Empty;
+
+        var result = list.PrintList();
+        Assert.Equal(expected, result);
+    }
 }
