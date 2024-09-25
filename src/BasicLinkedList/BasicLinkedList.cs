@@ -45,10 +45,18 @@ public class BasicLinkedList<T>
 
         var deletingFromStart = position == 0;
         if (deletingFromStart) {
-            _head = _head?.Next;
+            DeleteHead();
             return;
         }
 
+        DeleteAtPosition(position);
+    }
+
+    private void DeleteHead() {
+        _head = _head?.Next;
+    }
+
+    private void DeleteAtPosition(int position) {
         var currentPosition = 0;
         var currentItem = _head;
 
