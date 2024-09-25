@@ -66,6 +66,18 @@ public class BasicLinkedListTests
     }
 
     [Fact]
+    public void BasicLinkedList_InsertByPositionToEmptyList_AddsToStartOfList()
+    {
+        var list = new BasicLinkedList<int>();
+        list.Insert(42, 5);
+
+        var expected = "42";
+
+        var result = list.PrintList();
+        Assert.Equal(expected, result);
+    }
+
+    [Fact]
     public void BasicLinkedList_InsertAtOutOfRangePosition_InsertsAtEnd()
     {
         var list = new BasicLinkedList<int>();

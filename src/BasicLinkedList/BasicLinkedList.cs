@@ -8,8 +8,9 @@ public class BasicLinkedList<T>
 
         var newListItem = new BasicLinkedListItem<T>(item);
 
+        var listIsEmpty = _head is null;
         var isInsertingAtStart = position <= 0;
-        if (isInsertingAtStart) {
+        if (listIsEmpty || isInsertingAtStart) {
             newListItem.Next = _head;
             _head = newListItem;
             return;
