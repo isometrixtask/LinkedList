@@ -133,4 +133,30 @@ public class BasicLinkedListTests
         var result = list.PrintList();
         Assert.Equal(expected, result);
     }
+
+    [Fact]
+    public void BasicLinkedList_DeleteOutOfRangePositionLow_DoesNotModifyList()
+    {
+        var list = new BasicLinkedList<int>();
+        list.Insert(42);
+        list.Delete(-100);
+
+        var expected = "42";
+
+        var result = list.PrintList();
+        Assert.Equal(expected, result);
+    }
+
+    [Fact]
+    public void BasicLinkedList_DeleteOutOfRangePositionHigh_DoesNotModifyList()
+    {
+        var list = new BasicLinkedList<int>();
+        list.Insert(42);
+        list.Delete(100);
+
+        var expected = "42";
+
+        var result = list.PrintList();
+        Assert.Equal(expected, result);
+    }
 }

@@ -39,7 +39,7 @@ public class BasicLinkedList<T>
         var currentPosition = 0;
         var currentItem = _head;
 
-        while (currentPosition < position - 1)
+        while (currentPosition < position - 1 && currentItem?.Next is not null)
         {
             currentItem = currentItem.Next;
             currentPosition++;
