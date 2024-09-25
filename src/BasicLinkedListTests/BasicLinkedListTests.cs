@@ -24,4 +24,17 @@ public class BasicLinkedListTests
         var result = list.PrintList();
         Assert.Equal(expected, result);
     }
+
+    [Fact]
+    public void BasicLinkedList_InsertMultiple_ModifiesPrintListOutput()
+    {
+        var list = new BasicLinkedList<int>();
+        list.Insert(42);
+        list.Insert(9);
+
+        var expected = "9, 42";
+
+        var result = list.PrintList();
+        Assert.Equal(expected, result);
+    }
 }
