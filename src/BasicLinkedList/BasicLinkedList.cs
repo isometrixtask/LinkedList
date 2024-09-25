@@ -11,22 +11,31 @@ public class BasicLinkedList<T>
         var listIsEmpty = _head is null;
         var isInsertingAtStart = position <= 0;
         if (listIsEmpty || isInsertingAtStart) {
-            newListItem.Next = _head;
-            _head = newListItem;
+            InsertNewHead(newListItem);
             return;
         }
 
+        InsertAtPosition(newListItem, position);
+    }
+
+    private void InsertNewHead(BasicLinkedListItem<T> newListItem) {
+        newListItem.Next = _head;
+        _head = newListItem;
+    }
+
+    private void InsertAtPosition(BasicLinkedListItem<T> newListItem, int position)
+    {
         var currentPosition = 0;
         var currentItem = _head;
 
-        while (currentPosition < position - 1 && currentItem?.Next is not null) {
+        while (currentPosition < position - 1 && currentItem?.Next is not null)
+        {
             currentItem = currentItem.Next;
             currentPosition++;
         }
 
         newListItem.Next = currentItem?.Next;
         currentItem.Next = newListItem;
-
     }
 
     public void Delete(int position = 0) {
