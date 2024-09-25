@@ -66,6 +66,32 @@ public class BasicLinkedListTests
     }
 
     [Fact]
+    public void BasicLinkedList_InsertAtOutOfRangePosition_InsertsAtEnd()
+    {
+        var list = new BasicLinkedList<int>();
+        list.Insert(42);
+        list.Insert(9, 100);
+
+        var expected = "42, 9";
+
+        var result = list.PrintList();
+        Assert.Equal(expected, result);
+    }
+
+    [Fact]
+    public void BasicLinkedList_InsertAtOutOfRangePosition_InsertsAtStart()
+    {
+        var list = new BasicLinkedList<int>();
+        list.Insert(42);
+        list.Insert(9, -100);
+
+        var expected = "9, 42";
+
+        var result = list.PrintList();
+        Assert.Equal(expected, result);
+    }
+
+    [Fact]
     public void BasicLinkedList_Delete_RemovesItemFromList()
     {
         var list = new BasicLinkedList<int>();
