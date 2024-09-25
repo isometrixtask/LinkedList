@@ -92,7 +92,7 @@ public class BasicLinkedListTests
     }
 
     [Fact]
-    public void BasicLinkedList_Delete_RemovesItemFromList()
+    public void BasicLinkedList_DeleteFromStart_RemovesSpecifiedItem()
     {
         var list = new BasicLinkedList<int>();
         list.Insert(42);
@@ -100,6 +100,35 @@ public class BasicLinkedListTests
         list.Delete();
 
         var expected = "42";
+
+        var result = list.PrintList();
+        Assert.Equal(expected, result);
+    }
+
+    [Fact]
+    public void BasicLinkedList_DeleteFromMiddle_RemovesSpecifiedItem()
+    {
+        var list = new BasicLinkedList<int>();
+        list.Insert(42);
+        list.Insert(9, 1);
+        list.Insert(8, 1);
+        list.Delete(1);
+
+        var expected = "42, 9";
+
+        var result = list.PrintList();
+        Assert.Equal(expected, result);
+    }
+
+    [Fact]
+    public void BasicLinkedList_DeleteFromEnd_RemovesSpecifiedItem()
+    {
+        var list = new BasicLinkedList<int>();
+        list.Insert(42);
+        list.Insert(9);
+        list.Delete(1);
+
+        var expected = "9";
 
         var result = list.PrintList();
         Assert.Equal(expected, result);

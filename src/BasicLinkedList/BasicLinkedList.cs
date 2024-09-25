@@ -28,8 +28,24 @@ public class BasicLinkedList<T>
 
     }
 
-    public void Delete() {
-        _head = _head?.Next;
+    public void Delete(int position = 0) {
+
+        var deletingFromStart = position == 0;
+        if (deletingFromStart) {
+            _head = _head?.Next;
+            return;
+        }
+
+        var currentPosition = 0;
+        var currentItem = _head;
+
+        while (currentPosition < position - 1)
+        {
+            currentItem = currentItem.Next;
+            currentPosition++;
+        }
+
+        currentItem.Next = currentItem.Next?.Next;
     }
 
     public string PrintList() {
