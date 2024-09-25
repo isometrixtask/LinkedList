@@ -11,6 +11,10 @@ public class BasicLinkedList<T>
         _listItem = newListItem;
     }
 
+    public void Delete() {
+        _listItem = _listItem?.Next;
+    }
+
     public string PrintList() {
         if (_listItem is null) return string.Empty;
 

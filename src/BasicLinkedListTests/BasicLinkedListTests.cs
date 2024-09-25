@@ -37,4 +37,18 @@ public class BasicLinkedListTests
         var result = list.PrintList();
         Assert.Equal(expected, result);
     }
+
+    [Fact]
+    public void BasicLinkedList_Delete_RemovesItemFromList()
+    {
+        var list = new BasicLinkedList<int>();
+        list.Insert(42);
+        list.Insert(9);
+        list.Delete();
+
+        var expected = "42";
+
+        var result = list.PrintList();
+        Assert.Equal(expected, result);
+    }
 }
