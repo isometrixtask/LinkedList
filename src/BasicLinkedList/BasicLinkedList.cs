@@ -25,17 +25,9 @@ public class BasicLinkedList<T>
 
     private void InsertAtPosition(BasicLinkedListItem<T> newListItem, int position)
     {
-        var currentPosition = 0;
-        var currentItem = _head;
-
-        while (currentPosition < position - 1 && currentItem?.Next is not null)
-        {
-            currentItem = currentItem.Next;
-            currentPosition++;
-        }
-
-        newListItem.Next = currentItem?.Next;
-        currentItem.Next = newListItem;
+        var precedingItem = ItemAtPosition(position - 1);
+        newListItem.Next = precedingItem?.Next;
+        precedingItem.Next = newListItem;
     }
 
     public void Delete(int position = 0) {
@@ -57,16 +49,22 @@ public class BasicLinkedList<T>
     }
 
     private void DeleteAtPosition(int position) {
+
+        var precedingItem = ItemAtPosition(position - 1);
+        precedingItem.Next = precedingItem.Next?.Next;
+    }
+
+    private BasicLinkedListItem<T> ItemAtPosition(int position) {
         var currentPosition = 0;
         var currentItem = _head;
 
-        while (currentPosition < position - 1 && currentItem?.Next is not null)
+        while (currentPosition < position && currentItem?.Next is not null)
         {
             currentItem = currentItem.Next;
             currentPosition++;
         }
 
-        currentItem.Next = currentItem.Next?.Next;
+        return currentItem;
     }
 
     public string PrintList() {
